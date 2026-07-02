@@ -1,0 +1,37 @@
+[
+  {
+    "branch_id": "CSE",
+    "branch_name": "Computer Science & Engineering",
+    "clusters": ["Programming", "DSA", "Database", "AI_ML", "Systems", "Networking", "WebDev"],
+    "priority_competencies": ["CSE001", "CSE002", "CSE003", "CSE004", "CSE005", "CSE006", "CSE007", "CSE008", "CSE009", "CSE010"],
+    "common_competencies": ["CSE_ECE001", "CSE_ECE002"]
+  },
+  {
+    "branch_id": "ECE",
+    "branch_name": "Electronics & Communication Engineering",
+    "clusters": ["Digital_Electronics", "Embedded_Systems", "Analog_Electronics", "Signal_Processing", "Communications", "AI_ML"],
+    "priority_competencies": ["ECE001", "ECE002", "ECE003", "ECE004", "ECE005", "ECE006", "ECE007"],
+    "common_competencies": ["CSE_ECE001", "CSE_ECE002"]
+  },
+  {
+    "branch_id": "EEE",
+    "branch_name": "Electrical & Electronics Engineering",
+    "clusters": ["Analog_Electronics", "Embedded_Systems", "Signal_Processing"],
+    "priority_competencies": ["ECE003", "ECE004", "ECE007"],
+    "common_competencies": ["CSE_ECE001"]
+  },
+  {
+    "branch_id": "IT",
+    "branch_name": "Information Technology",
+    "clusters": ["Programming", "DSA", "Database", "Networking", "WebDev"],
+    "priority_competencies": ["CSE001", "CSE002", "CSE006", "CSE007", "CSE010"],
+    "common_competencies": ["CSE_ECE001"]
+  },
+  {
+    "branch_id": "MECH",
+    "branch_name": "Mechanical Engineering",
+    "clusters": ["Programming"],
+    "priority_competencies": ["CSE001"],
+    "common_competencies": ["CSE_ECE001"]
+  }
+]

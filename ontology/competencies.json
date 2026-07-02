@@ -1,0 +1,213 @@
+[
+  {
+    "competency_id": "CSE001",
+    "branch": "CSE",
+    "cluster_id": "Programming",
+    "skill": "Python (Advanced & OOPs)",
+    "sub_competencies": ["Syntax & Basics", "OOP Principles", "Decorators & Generators", "Memory Management", "Standard Library"],
+    "bloom_levels": ["Remember", "Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "multi-select"],
+    "min_pool_size": 15,
+    "description": "Core Python programming including advanced OOP, memory model, and standard library usage."
+  },
+  {
+    "competency_id": "CSE002",
+    "branch": "CSE",
+    "cluster_id": "DSA",
+    "skill": "Data Structures & Algorithms",
+    "sub_competencies": ["Arrays & Strings", "Linked Lists", "Trees & Graphs", "Sorting & Searching", "Dynamic Programming"],
+    "bloom_levels": ["Understand", "Apply", "Analyze", "Evaluate"],
+    "item_types": ["MCQ", "coding", "numeric"],
+    "min_pool_size": 15,
+    "description": "Fundamental and advanced data structures with algorithmic problem-solving and complexity analysis."
+  },
+  {
+    "competency_id": "CSE003",
+    "branch": "CSE",
+    "cluster_id": "Programming",
+    "skill": "Java (Multithreading & Collections)",
+    "sub_competencies": ["OOP in Java", "Collections Framework", "Concurrency & Threads", "Exception Handling", "JVM Internals"],
+    "bloom_levels": ["Remember", "Understand", "Apply"],
+    "item_types": ["MCQ"],
+    "min_pool_size": 10,
+    "description": "Java programming with emphasis on multithreading, the collections framework, and JVM behaviour."
+  },
+  {
+    "competency_id": "CSE004",
+    "branch": "CSE",
+    "cluster_id": "Programming",
+    "skill": "C++ (Memory Management & STL)",
+    "sub_competencies": ["Pointers & References", "RAII & Smart Pointers", "STL Containers", "Templates", "Move Semantics"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "multi-select"],
+    "min_pool_size": 10,
+    "description": "Modern C++ with deep coverage of memory management, RAII, and the Standard Template Library."
+  },
+  {
+    "competency_id": "CSE005",
+    "branch": "CSE",
+    "cluster_id": "Systems",
+    "skill": "Operating Systems",
+    "sub_competencies": ["Process & Thread Management", "CPU Scheduling", "Memory Management", "File Systems", "Deadlocks & Synchronisation"],
+    "bloom_levels": ["Remember", "Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "multi-select"],
+    "min_pool_size": 10,
+    "description": "Core OS concepts: scheduling, virtual memory, file systems, synchronisation, and deadlock prevention."
+  },
+  {
+    "competency_id": "CSE006",
+    "branch": "CSE",
+    "cluster_id": "Database",
+    "skill": "Database Management Systems (DBMS & SQL)",
+    "sub_competencies": ["Relational Algebra", "SQL Queries", "Normalisation", "Indexing & Query Optimisation", "Transactions & ACID"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "coding"],
+    "min_pool_size": 10,
+    "description": "Relational database theory, SQL proficiency, query optimisation, and transaction management."
+  },
+  {
+    "competency_id": "CSE007",
+    "branch": "CSE",
+    "cluster_id": "Networking",
+    "skill": "Computer Networks",
+    "sub_competencies": ["OSI & TCP/IP Model", "Routing Protocols", "Transport Layer (TCP/UDP)", "HTTP & REST", "Network Security Basics"],
+    "bloom_levels": ["Remember", "Understand", "Apply"],
+    "item_types": ["MCQ"],
+    "min_pool_size": 10,
+    "description": "Network architecture, protocols, routing, and application-layer communication fundamentals."
+  },
+  {
+    "competency_id": "CSE008",
+    "branch": "CSE",
+    "cluster_id": "AI_ML",
+    "skill": "Machine Learning Fundamentals",
+    "sub_competencies": ["Supervised Learning", "Unsupervised Learning", "Model Evaluation Metrics", "Feature Engineering", "Overfitting & Regularisation"],
+    "bloom_levels": ["Understand", "Apply", "Analyze", "Evaluate"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Core ML algorithms, evaluation methodology, and feature engineering best practices."
+  },
+  {
+    "competency_id": "CSE009",
+    "branch": "CSE",
+    "cluster_id": "AI_ML",
+    "skill": "Deep Learning & Neural Networks",
+    "sub_competencies": ["Feedforward Networks", "CNNs", "RNNs & LSTMs", "Backpropagation & Optimisers", "Transfer Learning"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Deep learning architectures, training dynamics, and practical neural network design."
+  },
+  {
+    "competency_id": "CSE010",
+    "branch": "CSE",
+    "cluster_id": "WebDev",
+    "skill": "Web Development (Frontend & Backend Basics)",
+    "sub_competencies": ["HTML/CSS", "JavaScript Fundamentals", "REST API Design", "Frontend Frameworks Concepts", "HTTP & Browser"],
+    "bloom_levels": ["Remember", "Understand", "Apply"],
+    "item_types": ["MCQ"],
+    "min_pool_size": 10,
+    "description": "Full-stack web fundamentals: HTML/CSS/JS, API design, and browser mechanics."
+  },
+
+  {
+    "competency_id": "ECE001",
+    "branch": "ECE",
+    "cluster_id": "Digital_Electronics",
+    "skill": "Digital Electronics & Logic Design",
+    "sub_competencies": ["Boolean Algebra", "Combinational Circuits", "Sequential Circuits", "FSMs", "Minimisation (K-Map)"],
+    "bloom_levels": ["Remember", "Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 15,
+    "description": "Digital logic from Boolean algebra through combinational and sequential circuit design."
+  },
+  {
+    "competency_id": "ECE002",
+    "branch": "ECE",
+    "cluster_id": "Embedded_Systems",
+    "skill": "Embedded C & Microcontrollers",
+    "sub_competencies": ["C for Embedded", "GPIO & Peripherals", "Interrupts & Timers", "Communication Protocols (I2C/SPI/UART)", "RTOS Basics"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "multi-select"],
+    "min_pool_size": 15,
+    "description": "Embedded systems programming in C, microcontroller peripherals, and bare-metal/RTOS development."
+  },
+  {
+    "competency_id": "ECE003",
+    "branch": "ECE",
+    "cluster_id": "Analog_Electronics",
+    "skill": "Analog Electronics & Circuit Analysis",
+    "sub_competencies": ["Diodes & Transistors", "Op-Amp Circuits", "Amplifier Design", "Filters", "Power Electronics Basics"],
+    "bloom_levels": ["Remember", "Understand", "Apply"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Analog circuit fundamentals: semiconductor devices, amplifiers, op-amps, and filters."
+  },
+  {
+    "competency_id": "ECE004",
+    "branch": "ECE",
+    "cluster_id": "Signal_Processing",
+    "skill": "Signals & Systems",
+    "sub_competencies": ["Fourier Transform", "Laplace Transform", "Z-Transform", "Sampling Theorem", "LTI Systems"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Continuous and discrete signal analysis, transforms, and linear time-invariant system theory."
+  },
+  {
+    "competency_id": "ECE005",
+    "branch": "ECE",
+    "cluster_id": "Communications",
+    "skill": "Communication Systems",
+    "sub_competencies": ["Modulation (AM/FM/PM)", "Digital Modulation (ASK/FSK/PSK/QAM)", "Channel Capacity (Shannon)", "Error Coding", "Wireless Communication Basics"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Analog and digital communication systems, modulation schemes, and channel capacity theory."
+  },
+  {
+    "competency_id": "ECE006",
+    "branch": "ECE",
+    "cluster_id": "Digital_Electronics",
+    "skill": "VLSI Design Fundamentals",
+    "sub_competencies": ["CMOS Technology", "Logic Gates at Transistor Level", "VLSI Design Flow", "Timing Analysis", "HDL Basics (Verilog)"],
+    "bloom_levels": ["Understand", "Apply"],
+    "item_types": ["MCQ"],
+    "min_pool_size": 10,
+    "description": "CMOS-based VLSI design fundamentals, HDL coding, and digital design flow."
+  },
+  {
+    "competency_id": "ECE007",
+    "branch": "ECE",
+    "cluster_id": "Embedded_Systems",
+    "skill": "Control Systems",
+    "sub_competencies": ["Transfer Functions", "Stability (Routh-Hurwitz)", "Root Locus", "Bode Plots", "PID Controllers"],
+    "bloom_levels": ["Understand", "Apply", "Analyze"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Classical control theory including stability analysis, frequency domain, and PID design."
+  },
+
+  {
+    "competency_id": "CSE_ECE001",
+    "branch": "CSE/ECE",
+    "cluster_id": "Programming",
+    "skill": "Problem Solving & Computational Thinking",
+    "sub_competencies": ["Logical Reasoning", "Pseudocode & Flowcharts", "Time Complexity Analysis", "Debugging Strategies", "Pattern Recognition"],
+    "bloom_levels": ["Understand", "Apply", "Analyze", "Evaluate"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Cross-domain computational thinking, algorithm design, and structured problem solving."
+  },
+  {
+    "competency_id": "CSE_ECE002",
+    "branch": "CSE/ECE",
+    "cluster_id": "AI_ML",
+    "skill": "Mathematics for Engineering (Linear Algebra & Probability)",
+    "sub_competencies": ["Matrix Operations", "Eigenvalues", "Probability Distributions", "Bayes Theorem", "Statistics Basics"],
+    "bloom_levels": ["Remember", "Understand", "Apply"],
+    "item_types": ["MCQ", "numeric"],
+    "min_pool_size": 10,
+    "description": "Mathematical foundations: linear algebra, probability theory, and statistics essential for CSE and ECE."
+  }
+]

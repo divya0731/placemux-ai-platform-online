@@ -1,0 +1,74 @@
+[
+  {
+    "cluster_id": "Programming",
+    "cluster_name": "Programming & Software Engineering",
+    "branch": "CSE",
+    "description": "Core programming languages, OOP, and software design patterns."
+  },
+  {
+    "cluster_id": "DSA",
+    "cluster_name": "Data Structures & Algorithms",
+    "branch": "CSE",
+    "description": "Fundamental and advanced data structures, algorithm design, and complexity analysis."
+  },
+  {
+    "cluster_id": "Database",
+    "cluster_name": "Database Systems",
+    "branch": "CSE",
+    "description": "Relational databases, SQL, query optimisation, and transaction management."
+  },
+  {
+    "cluster_id": "AI_ML",
+    "cluster_name": "AI & Machine Learning",
+    "branch": "CSE/ECE",
+    "description": "Machine learning, deep learning, and mathematical foundations for AI."
+  },
+  {
+    "cluster_id": "Systems",
+    "cluster_name": "Systems & Operating Systems",
+    "branch": "CSE",
+    "description": "OS internals, process management, memory, and file systems."
+  },
+  {
+    "cluster_id": "Networking",
+    "cluster_name": "Computer Networks",
+    "branch": "CSE",
+    "description": "Network protocols, routing, TCP/IP stack, and application-layer communication."
+  },
+  {
+    "cluster_id": "WebDev",
+    "cluster_name": "Web Development",
+    "branch": "CSE",
+    "description": "Frontend/backend web technologies, REST APIs, and browser fundamentals."
+  },
+  {
+    "cluster_id": "Digital_Electronics",
+    "cluster_name": "Digital Electronics & VLSI",
+    "branch": "ECE",
+    "description": "Digital logic design, CMOS technology, and VLSI fundamentals."
+  },
+  {
+    "cluster_id": "Embedded_Systems",
+    "cluster_name": "Embedded Systems & Control",
+    "branch": "ECE",
+    "description": "Microcontrollers, embedded C programming, RTOS, and control systems."
+  },
+  {
+    "cluster_id": "Analog_Electronics",
+    "cluster_name": "Analog Electronics & Circuits",
+    "branch": "ECE",
+    "description": "Analog circuit design, semiconductor devices, amplifiers, and power electronics."
+  },
+  {
+    "cluster_id": "Signal_Processing",
+    "cluster_name": "Signals, Systems & DSP",
+    "branch": "ECE",
+    "description": "Signal analysis, transforms (Fourier/Laplace/Z), and LTI system theory."
+  },
+  {
+    "cluster_id": "Communications",
+    "cluster_name": "Communication Systems",
+    "branch": "ECE",
+    "description": "Analog and digital communication, modulation, channel coding, and wireless systems."
+  }
+]

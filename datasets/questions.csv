@@ -1,0 +1,6 @@
+QuestionID,CompetencyID,Difficulty,Question,OptionA,OptionB,OptionC,OptionD,CorrectAnswer
+Q001,CSE001,Easy,What is Python?,Snake,Programming Language,Database,OS,B
+Q002,CSE001,Easy,Which keyword defines a function?,func,function,def,define,C
+Q003,CSE001,Easy,Which data type stores True/False?,String,List,Boolean,Integer,C
+Q004,CSE001,Easy,Which symbol starts a comment?,#,//,<!--,-->,A
+Q005,CSE001,Easy,Python is ?,Compiled,Interpreted,Hardware,Database,B

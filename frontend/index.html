@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceMux AI — Adaptive Assessment Platform</title>
+    <meta name="description" content="PlaceMux AI-powered adaptive cognitive assessment with real-time proctoring and career recommendations.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- face-api.js — real ML face detection -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ambient background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="noise-overlay"></div>
+
+    <div class="shell">
+        <!-- ── HEADER ── -->
+        <header class="topbar">
+            <div class="topbar-brand">
+                <div class="brand-icon"><i class="fa-solid fa-brain"></i></div>
+                <span class="brand-name">Place<span class="brand-accent">Mux</span></span>
+                <div class="brand-tag">AI Assessment</div>
+            </div>
+            <div id="topbar-status" class="topbar-status hidden">
+                <div id="proctor-live-dot" class="live-dot"></div>
+                <span id="proctor-live-label">Proctoring Active</span>
+                <div class="topbar-divider"></div>
+                <div id="ability-live" class="ability-live">θ = 0.00</div>
+                <div class="topbar-divider"></div>
+                <div id="topbar-user" class="topbar-user">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span id="topbar-uname">Candidate</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ── MAIN ── -->
+        <main class="main-area">
+
+            <!-- ════════════════════════════════════════ VIEW 1: WELCOME -->
+            <section id="view-welcome" class="view active">
+                <div class="welcome-wrap">
+                    <div class="welcome-left">
+                        <div class="welcome-badge">
+                            <i class="fa-solid fa-microchip-ai"></i>
+                            <span>Computer Adaptive Testing · 3PL IRT Engine</span>
+                        </div>
+                        <h1 class="welcome-title">Measure Your True <span class="grad-text">Cognitive Ability</span></h1>
+                        <p class="welcome-sub">PlaceMux dynamically adjusts question difficulty in real time using a calibrated Item Response Theory model — giving you a shorter, fairer, and more accurate assessment than any fixed exam.</p>
+
+
+                        <div class="feature-chips">
+                            <div class="chip"><i class="fa-solid fa-brain"></i>Adaptive IRT Engine</div>
+                            <div class="chip"><i class="fa-solid fa-shield-halved"></i>AI Face Proctoring</div>
+                            <div class="chip"><i class="fa-solid fa-chart-radar"></i>Career Matching</div>
+                            <div class="chip"><i class="fa-solid fa-infinity"></i>Live Ability Score</div>
+                        </div>
+
+                        <div class="steps-list">
+                            <div class="step"><div class="step-num">01</div><div class="step-info"><strong>Register</strong><span>Enter your details and allow camera access</span></div></div>
+                            <div class="step"><div class="step-num">02</div><div class="step-info"><strong>Assess</strong><span>Answer adaptive questions — difficulty shifts with you</span></div></div>
+                            <div class="step"><div class="step-num">03</div><div class="step-info"><strong>Discover</strong><span>Receive your cognitive profile and career matches</span></div></div>
+                        </div>
+                    </div>
+
+                    <div class="welcome-right">
+                        <div class="reg-card glass">
+                            <div class="reg-card-header">
+                                <h2>Start Your Assessment</h2>
+                                <p>Takes 8–12 minutes depending on your ability level</p>
+                            </div>
+                            <form id="reg-form">
+                                <div class="field-row">
+                                    <div class="field-group">
+                                        <label for="reg-name"><i class="fa-solid fa-user"></i> Full Name</label>
+                                        <input type="text" id="reg-name" placeholder="e.g. Shaik Mohammed" required autocomplete="name">
+                                    </div>
+                                    <div class="field-group">
+                                        <label for="reg-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                        <input type="email" id="reg-email" placeholder="you@college.edu" required autocomplete="email">
+                                    </div>
+                                </div>
+                                <div class="field-row">
+                                    <div class="field-group">
+                                        <label for="reg-branch"><i class="fa-solid fa-graduation-cap"></i> Branch / Dept</label>
+                                        <div class="select-wrap">
+                                            <select id="reg-branch" required>
+                                                <option value="">Select Branch</option>
+                                                <option value="CSE">CSE — Computer Science</option>
+                                                <option value="ECE">ECE — Electronics &amp; Comm</option>
+                                                <option value="EEE">EEE — Electrical &amp; Electronics</option>
+                                                <option value="IT">IT — Information Technology</option>
+                                                <option value="MECH">MECH — Mechanical</option>
+                                            </select>
+                                            <i class="fa-solid fa-chevron-down select-arrow"></i>
+                                        </div>
+                                    </div>
+                                    <div class="field-group">
+                                        <label for="reg-year"><i class="fa-solid fa-calendar-days"></i> Year of Study</label>
+                                        <div class="select-wrap">
+                                            <select id="reg-year">
+                                                <option value="">Select Year</option>
+                                                <option value="1st Year">1st Year</option>
+                                                <option value="2nd Year">2nd Year</option>
+                                                <option value="3rd Year">3rd Year</option>
+                                                <option value="Final Year">Final Year</option>
+                                            </select>
+                                            <i class="fa-solid fa-chevron-down select-arrow"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-group">
+                                    <label for="reg-college"><i class="fa-solid fa-school"></i> College / Institution</label>
+                                    <input type="text" id="reg-college" placeholder="e.g. JNTU Hyderabad" autocomplete="organization">
+                                </div>
+                                <div class="field-group">
+                                    <label for="reg-topic"><i class="fa-solid fa-code"></i> Assessment Domain</label>
+                                    <div class="select-wrap">
+                                        <select id="reg-topic" required>
+                                            <optgroup label="CSE — Programming">
+                                                <option value="CSE001">Python — Advanced &amp; OOP</option>
+                                                <option value="CSE002">DSA — Data Structures &amp; Algorithms</option>
+                                            </optgroup>
+                                            <optgroup label="ECE — Electronics">
+                                                <option value="ECE001">Digital Electronics &amp; Logic Design</option>
+                                                <option value="ECE002">Embedded C &amp; Microcontrollers</option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+                                    </div>
+                                </div>
+
+                                <div class="proctor-note">
+                                    <i class="fa-solid fa-video"></i>
+                                    <div>
+                                        <strong>AI &amp; Audio Proctoring Required</strong>
+                                        <span>Your webcam and microphone will be used for real-time face and audio tracking. Ensure good lighting and stay centered.</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-glow btn-block" id="btn-start">
+                                    <span>Begin Assessment</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </form>
+
+                            <ul class="rules-list">
+                                <li><i class="fa-solid fa-circle-dot"></i>Do not switch tabs (max 3 switches before auto-termination)</li>
+                                <li><i class="fa-solid fa-circle-dot"></i>Stay visible in camera frame throughout</li>
+                                <li><i class="fa-solid fa-circle-dot"></i>No additional devices, persons, or loud noises in background</li>
+                                <li><i class="fa-solid fa-circle-dot"></i>Exam runs in <strong>fullscreen mode</strong> — do not minimize or exit fullscreen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════ VIEW 2: TEST -->
+            <section id="view-test" class="view">
+                <div class="test-layout">
+
+                    <!-- LEFT: Question area -->
+                    <div class="q-panel glass">
+                        <!-- Top bar: progress & meta -->
+                        <div class="q-topbar">
+                            <div class="q-meta-left">
+                                <span class="q-num-label">Question <strong id="q-num">1</strong></span>
+                                <div id="diff-pill" class="diff-pill easy">Easy</div>
+                                <div id="sem-indicator" class="sem-indicator">
+                                    <i class="fa-solid fa-signal"></i>
+                                    <span>SEM: <strong id="sem-live">—</strong></span>
+                                </div>
+                            </div>
+                            <div class="q-meta-right">
+                                <div id="theta-chip" class="theta-chip">θ <strong id="theta-live">0.00</strong></div>
+                            </div>
+                        </div>
+                        <div class="q-progress-track">
+                            <div id="q-progress-bar" class="q-progress-fill" style="width: 0%"></div>
+                        </div>
+
+                        <!-- Question body -->
+                        <div class="q-body">
+                            <div class="q-icon-wrap"><i class="fa-solid fa-code q-icon"></i></div>
+                            <p class="q-text" id="q-text">Initializing adaptive engine…</p>
+                        </div>
+
+                        <!-- Options -->
+                        <div class="opts-grid" id="opts-grid"></div>
+
+                        <!-- Footer -->
+                        <div class="q-footer">
+                            <div class="q-footer-hint"><i class="fa-solid fa-lightbulb"></i> Select the best answer</div>
+                            <button id="btn-submit" class="btn btn-glow" disabled>
+                                <span>Submit Answer</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Proctoring sidebar -->
+                    <div class="proctor-sidebar">
+
+                        <!-- Camera module -->
+                        <div class="cam-card glass">
+                            <div class="cam-header">
+                                <div class="cam-title-row">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <span>AI Proctoring</span>
+                                </div>
+                                <div class="live-badge">
+                                    <div class="pulse-ring"></div>
+                                    <span>LIVE</span>
+                                </div>
+                            </div>
+
+                            <!-- Camera viewport -->
+                            <div class="cam-viewport" id="cam-viewport">
+                                <video id="cam-video" autoplay muted playsinline></video>
+                                <canvas id="cam-canvas"></canvas>
+                                <!-- Overlay UI elements -->
+                                <div class="cam-corner tl"></div>
+                                <div class="cam-corner tr"></div>
+                                <div class="cam-corner bl"></div>
+                                <div class="cam-corner br"></div>
+                                <div class="cam-scan-line" id="cam-scan"></div>
+                                <div class="cam-status-bar" id="cam-status-bar">
+                                    <div class="cam-status-dot" id="cam-status-dot"></div>
+                                    <span id="cam-status-text">INITIALIZING...</span>
+                                </div>
+                                <div class="face-count-badge" id="face-count-badge" style="display:none">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span id="face-count-num">2</span>
+                                </div>
+                            </div>
+
+                            <!-- Detection metrics -->
+                            <div class="detection-metrics">
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-face-smile"></i> Face Status</span>
+                                    <span class="metric-val" id="face-status">Waiting…</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-microphone"></i> Audio Status</span>
+                                    <span class="metric-val" id="audio-status">Waiting…</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-expand"></i> Fullscreen</span>
+                                    <span class="metric-val safe" id="fullscreen-status">ACTIVE</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-eye"></i> Attention</span>
+                                    <div class="attention-bar">
+                                        <div id="attention-fill" class="attention-fill" style="width:100%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-triangle-exclamation"></i> Violations</span>
+                                    <span class="metric-val danger" id="violation-count">0</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label"><i class="fa-solid fa-lock"></i> Integrity</span>
+                                    <span class="metric-val safe" id="integrity-status">SECURE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Session Info card -->
+                        <div class="session-card glass">
+                            <div class="session-row">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <div class="session-info"><span class="s-label">Candidate</span><span class="s-val" id="s-name">—</span></div>
+                            </div>
+                            <div class="session-row">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <div class="session-info"><span class="s-label">Domain</span><span class="s-val">Python — Advanced</span></div>
+                            </div>
+                            <div class="session-row">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <div class="session-info"><span class="s-label">Ability Estimate</span><span class="s-val" id="s-theta">θ = 0.00 (SEM ±1.00)</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Warning toast (hidden by default) -->
+                        <div id="warn-toast" class="warn-toast hidden">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div class="toast-body">
+                                <strong id="warn-title">Warning</strong>
+                                <span id="warn-msg">Violation detected</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════ VIEW 3: DASHBOARD -->
+            <section id="view-dashboard" class="view">
+
+                <div class="dash-topbar glass">
+                    <div>
+                        <h1 class="dash-title">Cognitive Assessment Report</h1>
+                        <p class="dash-sub" id="dash-sub">Results for <strong id="dash-name">Candidate</strong></p>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button id="btn-restart" class="btn btn-outline"><i class="fa-solid fa-rotate-left"></i> New Assessment</button>
+                    </div>
+                </div>
+
+                <div class="dash-grid">
+
+                    <!-- Score card -->
+                    <div class="dash-card glass score-card">
+                        <h3 class="card-title"><i class="fa-solid fa-trophy"></i> Ability Score</h3>
+                        <div class="gauge-wrap">
+                            <canvas id="gauge-canvas" width="240" height="240"></canvas>
+                            <div class="gauge-inner">
+                                <span id="dash-score" class="gauge-score">—</span>
+                                <span class="gauge-label">Scaled Score</span>
+                            </div>
+                        </div>
+                        <div class="score-tiles">
+                            <div class="score-tile">
+                                <span class="tile-lbl">Ability (θ)</span>
+                                <span class="tile-num" id="dash-theta">—</span>
+                            </div>
+                            <div class="score-tile">
+                                <span class="tile-lbl">Precision</span>
+                                <span class="tile-num" id="dash-confidence">—</span>
+                            </div>
+                            <div class="score-tile">
+                                <span class="tile-lbl">Percentile</span>
+                                <span class="tile-num" id="dash-percentile">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrity card -->
+                    <div class="dash-card glass integrity-card">
+                        <h3 class="card-title"><i class="fa-solid fa-shield-check"></i> Session Integrity</h3>
+                        <div id="verdict-banner" class="verdict-banner safe">LOW RISK</div>
+                        <div class="integrity-stats">
+                            <div class="int-stat">
+                                <span class="int-num" id="int-violations">0</span>
+                                <span class="int-lbl">Total Events</span>
+                            </div>
+                            <div class="int-stat">
+                                <span class="int-num danger" id="int-high">0</span>
+                                <span class="int-lbl">High Severity</span>
+                            </div>
+                            <div class="int-stat">
+                                <span class="int-num warn" id="int-med">0</span>
+                                <span class="int-lbl">Medium</span>
+                            </div>
+                        </div>
+                        <div class="risk-row">
+                            <span class="risk-label">Risk Score</span>
+                            <div class="risk-track"><div id="risk-fill" class="risk-fill" style="width:0%"></div></div>
+                            <span class="risk-pct" id="risk-pct">0%</span>
+                        </div>
+                        <div id="flag-list" class="flag-list"></div>
+                    </div>
+
+                    <!-- Competency card -->
+                    <div class="dash-card glass comp-card">
+                        <h3 class="card-title"><i class="fa-solid fa-chart-radar"></i> Competency Profile</h3>
+                        <div id="comp-list" class="comp-list"></div>
+                    </div>
+
+                    <!-- Recommendations card -->
+                    <div class="dash-card glass rec-card">
+                        <h3 class="card-title"><i class="fa-solid fa-briefcase"></i> Career Match</h3>
+                        <div id="rec-list" class="rec-list"></div>
+                    </div>
+
+                </div>
+
+                <!-- Question review -->
+                <div class="review-panel glass">
+                    <h3 class="card-title"><i class="fa-solid fa-list-check"></i> Question-by-Question Review</h3>
+                    <div id="review-list" class="review-list"></div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <span>PlaceMux Adaptive Assessment Platform &copy; 2026</span>
+            <span>Powered by 3PL IRT · EAP Estimation · face-api.js</span>
+        </footer>
+    </div>
+
+    <!-- Fullscreen Exit Blocking Overlay -->
+    <div id="fullscreen-exit-overlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh;
+         background:rgba(1,2,8,0.95); backdrop-filter:blur(20px); z-index:99998;
+         flex-direction:column; justify-content:center; align-items:center;
+         font-family:'Inter',sans-serif; color:#fff; text-align:center;">
+        <div style="max-width:480px; padding:40px; border-radius:20px;
+                    background:rgba(255,255,255,0.03); border:1px solid rgba(239,68,68,0.3);
+                    box-shadow:0 8px 40px rgba(239,68,68,0.15);">
+            <div style="width:72px;height:72px;border-radius:50%;background:rgba(239,68,68,0.1);
+                        display:flex;justify-content:center;align-items:center;margin:0 auto 20px;">
+                <i class="fa-solid fa-compress" style="color:#EF4444;font-size:32px;"></i>
+            </div>
+            <h2 style="font-size:24px;font-weight:800;color:#EF4444;margin-bottom:10px;">Fullscreen Required</h2>
+            <p style="color:#94A3B8;font-size:15px;line-height:1.6;margin-bottom:8px;">
+                This exam must run in fullscreen mode. Exiting fullscreen is a proctoring violation.
+            </p>
+            <p id="fs-warning-count" style="color:#F59E0B;font-size:13px;font-weight:600;margin-bottom:24px;">Warning 1/3 — Returning to fullscreen automatically…</p>
+            <button onclick="enterFullscreen();document.getElementById('fullscreen-exit-overlay').style.display='none';" 
+                    style="background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;border:none;
+                           padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;
+                           cursor:pointer;box-shadow:0 4px 20px rgba(239,68,68,0.3);
+                           transition:transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-solid fa-expand"></i> Return to Fullscreen
+            </button>
+        </div>
+    </div>
+
+    <!-- JS App -->
+    <script src="app.js"></script>
+</body>
+</html>
